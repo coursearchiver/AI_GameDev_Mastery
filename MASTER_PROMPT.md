@@ -36,6 +36,17 @@ Novel-to-Game (narrative games): https://github.com/zenstory-ai/novel-to-game
 REA (optional reference analysis): https://github.com/morluto/rea
 Read each SELECTED framework's official README, docs, relevant source, tutorials, and examples before implementation. For Netfox multiplayer, systematically read the COMPLETE documentation set and apply its actual installed-version conventions. Netfox supports rollback-related infrastructure but does not magically make Godot physics deterministic. Use fixed ticks, reproducible/rollback-safe state as required, and verify sync under latency, packet loss, reconnects, and multiple instances. Use Co-op Anything skills where compatible, not as a replacement for Netfox. Reuse Game AI Kit for NPCs when useful; Novel-to-Game skills for story-rich genres; REA only when justified, legally and technically feasible. Independently recreate mechanics, not copyrighted game assets/code.
 
+
+GAME AI KIT — MODULAR GODOT ADDONS (WHEN NPC/BOT AI IS NEEDED)
+Repository: https://github.com/boscocp/game-ai-kit
+Official installation instructions: https://github.com/boscocp/game-ai-kit#using-one-addon-in-your-own-project
+Read its README, relevant module docs, demo projects, license and release instructions. The kit includes reusable behaviour trees/GOAP/HTN, perception, steering, teamwork, search, utility decisions, planning, fighting opponent modelling, and more. Pick the smallest modules relevant to the approved GDD; avoid reinventing algorithms.
+1. Prefer official published addon packages that match the engine version. If suitable packages are unavailable, clone into repos/game-ai-kit/ and follow the README's `make release` workflow. Check required tools, tests, clean Git HEAD, export conditions, and release artifacts; do not presume `make release` will succeed on every OS.
+2. Release ZIPs contain `addons/<module>/`; unpack the required module and `ai_core-<version>.zip` into the GODOT PROJECT ROOT (`res://`), resulting in addons/ai_core/ and addons/<module>/. Do not replace project.godot or copy the demo project. The classes use `class_name` and do not require enabling an editor plugin.
+3. Preserve Apache-2.0 LICENSE/NOTICE and VERSION included with packages and track pinned versions/commits in docs/DEPENDENCIES.md. Do not redistribute proprietary assets or unrelated demo content.
+4. Integrate each selected module with the actual game's NPC actions, movement, navigation and combat. Test decisions in the running game and performance on target hardware. For networked/rollback games, keep gameplay-affecting decisions and random seeds deterministic or authoritative/synchronized, and test desyncs.
+5. If the game needs no NPC AI, do not install the kit. Never install every module by default.
+
 OPTIONAL STEAM MULTIPLAYER — ASK FIRST
 GodotSteam GDExtension: https://godotengine.org/asset-library/asset/2445
 Docs: https://godotsteam.com/getting_started/introduction/
@@ -66,20 +77,18 @@ After START DEVELOPMENT: create ONE small playable mechanic first, then controls
 Explain uncertainties, failures, license/cost concerns, and unsupported features. Ask only when an important permission, scope decision, or blocker requires it. Do not claim untested features are working.
 
 
-SOULSLIKE / HEAVY 3D COMBAT STARTER
-Recommended starter: https://github.com/catprisbrey/Cats-Godot4-Modular-Souls-like-Template
-For a 3D Soulslike or character-action game, consider this as the main starting project instead of recreating all combat systems. Its README describes dodge rolls, parrying/blocking, targeting, root-motion, enemies, and animation assets. Note that the author flags the existing v2 codebase as awaiting a major v3 replacement; verify the current release, integration compatibility, and license before choosing it. This does not automatically provide multiplayer or a full Devil-May-Cry-style combo system. Read the README and test a clean import first.
 
-BLENDER IMPORT FIX
-If Godot/Summer reports that Blender 3.0+ is required to import .blend files, verify Blender is installed, install it from https://www.blender.org/download/ with the user's permission if missing, and configure the Blender executable path in Godot's import prompt or editor settings. On Windows select blender.exe, not the Blender install directory. Reimport assets and verify animations/materials. Do not disable .blend importing merely to hide the error if the template requires those files.
 
-BEGINNER GAME IDEA HELP
-The beginner need NOT already know what GDD means (Game Design Document, a simple one-page game plan). If no idea: offer 2–3 tiny concepts based on interests and help choose one. If they have an idea: turn it into a short, plain-language GDD automatically. Show the draft, explain the goal/rules/controls in everyday words, and ask for review. Never require the student to write a GDD unaided.
 
-PUBLIC REPO / SHARED TEACHING CHAT
-Helpful example chat: https://chatgpt.com/share/6b047749-5fcc-83ec-822e-3a76af146a33
-Students unfamiliar with Git may simply paste the public teaching-repository URL into a local coding agent and ask it to read README.md and MASTER_PROMPT.md. The agent must verify what it can access and explain if the URL cannot be read.
+### Fighter rollback selection — the user decides
 
-STARTING INSTRUCTION
-First: confirm a capable local coding agent; guide Summer installation/account/MCP if chosen; ask for a game idea and optional MP4 references; help choose a verified template; discuss optional multiplayer; draft a one-page GDD and request review. Wait for explicit GDD approval and START DEVELOPMENT before touching project files.
-```
+**Default:** Start with [clintcan/3d-fighter](https://github.com/clintcan/3d-fighter) and preserve its existing deterministic combat and rollback. **Do not install Netfox or Rollback in a Box just because they exist.** For wall-running, aerial combat, and breakable buildings, first prototype scripted movement and synchronized intact/damaged/collapsed collision states; cosmetic debris can remain visual-only.
+
+**Only if a verified limitation arises**, explain the alternatives in plain English and ask the user to choose:
+
+- **Keep the fighter's built-in rollback** — preferred when sufficient; no extra framework or wasted tokens.
+- **Netfox** — consider only for a concrete networking need that justifies migrating/reworking the fighter's rollback; it does not inherently make rigid-body physics deterministic.
+- **Rollback in a Box** — consider only if gameplay-critical moving rigid bodies or destructible rubble demand reproducible 3D physics, and prove integration in a small test.
+
+**Do not choose or integrate either optional system without explicit user approval.** Never run two competing rollback systems. If approved, use one simulation clock, one snapshot/rollback authority, and multi-client/desync tests. GodotSteam is a separate optional lobby/transport decision.
+

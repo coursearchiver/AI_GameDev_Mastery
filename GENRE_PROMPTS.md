@@ -12,7 +12,9 @@ Paste any of these **after the master prompt**. All examples begin with design/G
 | **Bullet Hell** | “Design a 2D space shooter with one boss, readable projectile patterns, 3 lives and score chasing. Make a controller-friendly MVP.” |
 | **Puzzle / Cozy** | “Design a cozy 2D café puzzle about sorting magical tea ingredients. 6 short levels, clear hints and a satisfying finish.” |
 | **Visual Novel** | “Design a branching mystery visual novel with 3 characters, 5 short scenes and 2 endings. Consider Novel-to-Game skills; present a narrative flowchart and GDD.” |
+| **3D Fighting / Tekken-style** | “Design an original 1v1 3D fighter using https://github.com/clintcan/3d-fighter as the preferred base. Reuse its built-in rollback and deterministic 60 Hz combat; do not automatically install Netfox. Start with 2 fighters, one stage and local versus, then assess Steam lobbies through GodotSteam separately. Verify Godot 4.7 compatibility, run tests, review asset licenses, and show me a one-page GDD before coding.” |
 | **2D Fighting** | “Design a simple local two-player fighting prototype with 2 original characters, light/heavy attacks, block and a round timer. Separate game logic from animations.” |
+| **Anime / Gacha RPG** | “Design a small original 3D anime action RPG with one character, one arena, one enemy, and a short quest. Read `SPECIALIZED_3D_ANIME_PROMPT.md`; evaluate Charakuru for VRM character creation and Ensō for scenery. Show a one-page GDD and tool/licensing costs before any downloads.” |
 | **3D Platformer** | “Design a low-poly 3D platformer about a wind-up toy climbing a giant desk. One room, moving platforms, collectible gears and a goal bell.” |
 | **3D Horror** | “Design a PS1-style first-person horror game in a deserted subway. One pursuer, 3 keys, no combat and a 15-minute level. Show the full game flow.” |
 | **3D Party Game** | “Design an original 4-player crate-throwing party game inspired by classic PS1 minigames. Start offline with one arena, bots, win/lose, results and rematch; discuss Netfox online play as phase 2.” |
@@ -56,3 +58,16 @@ I don't know what kind of game to make. Ask what games I like; propose 3 tiny id
 ```
 
 **Example shared teaching chat:** https://chatgpt.com/share/6b047749-5fcc-83ec-822e-3a76af146a33
+
+### Specialized anime art workflow
+
+```text
+I want an original 3D anime / VTuber / gacha-style game. Follow MASTER_PROMPT.md and SPECIALIZED_3D_ANIME_PROMPT.md. Help me choose a simple idea, then propose a one-page GDD. Use Charakuru for a character and Ensō for an environment only after verifying license, current releases and required tools; check the Godot imports before building more content. Wait for START DEVELOPMENT.
+```
+
+
+## Advanced 3D arena fighter (Dissidia-style)
+
+```text
+Help me design an original aerial arena fighter with wall-running, air dashes, knockback, and buildings that can collapse and block paths. Start from https://github.com/clintcan/3d-fighter and keep its existing rollback if it meets the design. Prototype simple state-based destruction first; cosmetic debris does not need deterministic physics. DO NOT install Netfox or Rollback in a Box automatically. Only if a specific limitation is demonstrated, explain their tradeoffs in plain English and let ME choose whether to keep the existing rollback, use Netfox, or investigate Rollback in a Box for gameplay-critical physics. Do not make that decision for me. First prepare a one-page GDD and wait for my approval and START DEVELOPMENT.
+```

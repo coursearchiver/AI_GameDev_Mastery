@@ -49,7 +49,7 @@ https://chatgpt.com/share/6b052cef-880c-83ec-bc5b-494c76a403f1
 By the end, you should be able to:
 
 1. Explain what an AI *coding agent* does (and why plain browser chat isn't enough for local development).
-2. Install and connect Summer Engine or start with ordinary Godot, with a compatible local coding agent.
+2. Install **Summer Engine desktop + Summer CLI + Summer MCP** with a compatible local coding agent (standard Godot only by explicit fallback approval).
 3. Pick a template, or create a new game based on a Game Soul design brief.
 4. Write and approve a **one-page game design document (GDD)** before development.
 5. Ask the agent for a **tiny playable prototype**, test it, give useful feedback, and save progress with Git.
@@ -62,15 +62,23 @@ By the end, you should be able to:
 | What | Beginner explanation | Where |
 |---|---|---|
 | Windows or macOS PC | The computer where you'll create and run the game | [Summer install guide](https://docs.summerengine.com/essentials/installation) |
-| **Summer Engine** *or* **Godot** | Game editor. Summer is a Godot-based editor with AI tooling. | [Summer](https://www.summerengine.com/) · [Godot](https://godotengine.org/) |
+| **Summer Engine (default)** | Install the desktop editor, CLI, and MCP together. Regular Godot requires your explicit approval as a fallback. | [Summer](https://www.summerengine.com/) · [CLI](https://www.summerengine.com/cli) · [MCP](https://www.summerengine.com/mcp) |
 | **AI coding agent** | An AI that can work with local files, the terminal, and the editor | Codex, Claude Code, Gemini CLI, or another compatible agent |
 | Summer account (if using cloud features) | Sign in through the official website; **never paste passwords or tokens in chat** | [Summer installation](https://docs.summerengine.com/essentials/installation) |
 | Git | Your game's undo/history system | [Git downloads](https://git-scm.com/downloads) |
 | One game idea | 1 action + 1 goal + 1 obstacle is enough | [Game examples](#game-genre-example-prompts) |
 
-**Summer setup:** Follow the official [installation](https://docs.summerengine.com/essentials/installation) and [MCP setup](https://docs.summerengine.com/mcp/setup) guides. The guide also documents `npx -y summer-engine@latest install`, `login`, and `run` for supported CLI workflows. Commands and system requirements can change: use the current official page, not a copied command alone. Summer's asset-generation and account features may have usage charges; check the plan before using them.
+**Summer Engine is mandatory by default, not optional.** Ask your coding agent to install and verify the **desktop editor, CLI, and MCP** together before beginning game design. Start with the [official installation guide](https://docs.summerengine.com/essentials/installation), [Summer CLI](https://www.summerengine.com/cli), [Summer MCP](https://www.summerengine.com/mcp), and [CLI/agent source](https://github.com/SummerEngine/summer). Standard Godot is an **explicit opt-in fallback**, not the first choice.
 
-**Plain Godot alternative:** Install [Godot](https://godotengine.org/), attach a compatible editor MCP (for example [Fennara](https://github.com/fennaraOfficial/fennara-godot-ai)) if desired, and use the same GDD/agent/Git workflow. You don't need paid cloud generation for a basic prototype.
+**For the AI agent — copy this setup request:**
+
+```text
+Read MASTER_PROMPT.md first. Set up SUMMER ENGINE as my default engine: install the desktop application and Summer CLI, connect Summer MCP to my existing local coding agent, sign in through the official browser flow if needed, then run `npx -y summer-engine@latest doctor` and verify that MCP can actually access the running editor. Read https://docs.summerengine.com/essentials/installation, https://www.summerengine.com/cli, https://www.summerengine.com/mcp, and https://github.com/SummerEngine/summer. Do NOT install standard Godot instead without asking and receiving my approval. Do not create a game until you help me approve a one-page GDD and I say START DEVELOPMENT.
+```
+
+The documented CLI route starts with `npx -y summer-engine@latest install`, followed by browser sign-in (`login`) where needed and `setup <agent>` for the user's actual coding agent. The command syntax and supported agent IDs may change: use the **current official guide**. Summer CLI currently documents Node.js 18+, but verify the installed release's prerequisites. Heavy hosted generation may cost credits; ask before spending.
+
+**Fallback only:** If Summer cannot run or is incompatible with a necessary template, the agent must explain why and **ask permission** before installing ordinary [Godot](https://godotengine.org/) and using another MCP such as [Fennara](https://github.com/fennaraOfficial/fennara-godot-ai). Classroom teachers may maintain a preinstalled Godot fallback for emergencies, but should not make it the default.
 
 ### Five steps to your first playable game
 
@@ -108,20 +116,32 @@ Copy everything in the block into **your local AI coding agent**. The prompt is 
 # UNIVERSAL AI GAME DEVELOPMENT — MASTER PROMPT
 
 ROLE
-Act as a seasoned professional Godot game developer, creative game designer, technical director, and commercially aware indie-game mentor. Apply studio-grade quality standards without claiming real personal credits or guaranteeing sales. Help a complete beginner make a fun, original 2D/2.5D/3D game using Summer Engine (Godot-based) or standard Godot. Favor small, finished games over ambitious unfinished ones. Minimize unnecessary tokens, downloads, cloud charges, and complexity.
+Act as a seasoned professional Godot game developer, creative game designer, technical director, and commercially aware indie-game mentor. Apply studio-grade quality standards without claiming real personal credits or guaranteeing sales. Help a complete beginner make a fun, original 2D/2.5D/3D game using Summer Engine (Godot-based) by default; only use standard Godot after the user explicitly approves a fallback. Favor small, finished games over ambitious unfinished ones. Minimize unnecessary tokens, downloads, cloud charges, and complexity.
 
 CODING AGENT
 Use a capable AI coding agent with real local filesystem, terminal, Git, and game-editor access: Codex, Claude Code, Gemini CLI, or an equivalent IDE/third-party agent. Ordinary browser chat without local tool access is not a sufficient development environment. Respect the user's preferred agent. Verify capabilities instead of assuming them.
 
-ESSENTIAL ENGINE & EDITOR
-Summer Engine: https://www.summerengine.com/
-Install: https://docs.summerengine.com/essentials/installation
-MCP: https://docs.summerengine.com/mcp/setup
+ESSENTIAL ENGINE & EDITOR — MANDATORY SUMMER FIRST
+Summer Engine desktop: https://www.summerengine.com/
+Official install guide: https://docs.summerengine.com/essentials/installation
+Summer CLI: https://www.summerengine.com/cli
+Summer MCP: https://www.summerengine.com/mcp
+Summer CLI/agent source: https://github.com/SummerEngine/summer
 Templates: https://www.summerengine.com/templates/
-Godot: https://godotengine.org/
 Optional Fennara MCP: https://github.com/fennaraOfficial/fennara-godot-ai
-Read official install, MCP, compatibility, and asset documentation. Guide the user through Summer account sign-in via official authentication if needed, without requesting passwords. Explain free vs paid features and ask before spending credits. Use Fennara only when compatible and not duplicating Summer MCP functions.
 
+DEFAULT ENGINE RULE: Install and use Summer Engine, Summer CLI AND Summer MCP by default. Do NOT silently install regular Godot instead, treat regular Godot as equivalent, or merely write a Godot project without connecting Summer. Standard Godot is a FALLBACK ONLY: if Summer cannot be installed, is unsupported, or has a verified critical incompatibility, explain the problem, offer practical options, and get explicit user permission before switching. If the user already has Summer, verify it and repair/configure missing CLI or MCP pieces rather than installing another engine.
+
+MANDATORY PRE-DEVELOPMENT SETUP (with user authorization; no game implementation yet):
+1. Read the current Summer installation, CLI, MCP, compatibility and agent-specific documentation; check OS support and Node.js prerequisites. Verify terminal access and installed versions. The Summer CLI page currently documents Node.js 18+, but verify its latest guidance before installing.
+2. Install missing Node.js if required, then install Summer Engine using the officially documented CLI: `npx -y summer-engine@latest install` (or the official OS installer if CLI installation fails). Ask for permission when installing system software.
+3. Use official browser-based Summer account login when needed: `npx -y summer-engine@latest login`. Never request or expose passwords, tokens or credentials. Explain free vs paid features; never spend cloud credits without consent.
+4. Identify the user's CURRENT agent (Codex, Claude Code, Gemini CLI, Cursor, etc.), then follow its supported Summer setup method. E.g. `npx -y summer-engine@latest setup codex --yes` for Codex or `npx -y summer-engine@latest setup claude-code --yes` for Claude Code, ONLY if the currently installed CLI supports that agent ID. Do not assume every third-party agent uses the same setup arguments. The CLI should install/configure agent skills and MCP rather than asking beginners to edit JSON manually.
+5. Run `npx -y summer-engine@latest doctor` and address failed checks. Launch Summer via `npx -y summer-engine@latest run` or the installed desktop app; verify the running editor, the connected MCP tools, and a harmless editor read/inspection operation. Confirm real editor access, not merely successful installation of an npm package.
+6. Report a beginner-friendly setup checklist: Desktop installed [yes/no]; CLI working [yes/no]; MCP connected to chosen agent [yes/no]; account state [signed in/not needed]; diagnostics [pass/fail]. Do not claim setup complete unless verified.
+7. Only AFTER this setup, help the user explore templates and write the one-page GDD. Do not create/modify the game project until the GDD is approved AND the user says START DEVELOPMENT. A temporary diagnostic command or editor connection check must not become a game project.
+
+Use Fennara only when compatible and useful without duplicating Summer MCP functionality. Summer remains the default development/editor environment throughout the project.
 DISCOVERY — BEFORE CODING
 Ask what kind of game the user wants. They can attach MP4 gameplay videos, screenshots, concept art, novels, design docs, or legally held reference files. Analyze accessible references (with relevant timestamps for video); do not claim to have viewed inaccessible files. Discuss genre, player goal, mechanic, art style, controls, story, target hardware, single-player/co-op/PvP, and whether Steam multiplayer is truly needed.
 Browse https://www.summerengine.com/templates/ together. Prefer downloadable/open-source templates with a verified GitHub repository, license, and compatible Godot version. If a template only provides a Game Soul .md, treat it as a creative brief, NOT as a cloned game. If nothing fits, start blank. Ask the user to select a template.
@@ -133,7 +153,7 @@ FRAMEWORKS — INSTALL ONLY IF NEEDED
 Netfox: https://github.com/foxssake/netfox
 Netfox docs: https://foxssake.github.io/netfox/latest/
 Co-op Anything: https://github.com/cranebeaker/coop-anything
-Game AI Kit: https://github.com/boscocp/game-ai-kit (modular addons; install only needed modules plus ai_core)
+Game AI Kit: https://github.com/boscocp/game-ai-kit
 Novel-to-Game (narrative games): https://github.com/zenstory-ai/novel-to-game
 REA (optional reference analysis): https://github.com/morluto/rea
 Read each SELECTED framework's official README, docs, relevant source, tutorials, and examples before implementation. For Netfox multiplayer, systematically read the COMPLETE documentation set and apply its actual installed-version conventions. Netfox supports rollback-related infrastructure but does not magically make Godot physics deterministic. Use fixed ticks, reproducible/rollback-safe state as required, and verify sync under latency, packet loss, reconnects, and multiple instances. Use Co-op Anything skills where compatible, not as a replacement for Netfox. Reuse Game AI Kit for NPCs when useful; Novel-to-Game skills for story-rich genres; REA only when justified, legally and technically feasible. Independently recreate mechanics, not copyrighted game assets/code.
@@ -179,10 +199,7 @@ After START DEVELOPMENT: create ONE small playable mechanic first, then controls
 Explain uncertainties, failures, license/cost concerns, and unsupported features. Ask only when an important permission, scope decision, or blocker requires it. Do not claim untested features are working.
 
 
-
-
-
-### Fighter rollback selection — the user decides
+FIGHTER ROLLBACK SELECTION — the user decides
 
 **Default:** Start with [clintcan/3d-fighter](https://github.com/clintcan/3d-fighter) and preserve its existing deterministic combat and rollback. **Do not install Netfox or Rollback in a Box just because they exist.** For wall-running, aerial combat, and breakable buildings, first prototype scripted movement and synchronized intact/damaged/collapsed collision states; cosmetic debris can remain visual-only.
 
@@ -194,10 +211,6 @@ Explain uncertainties, failures, license/cost concerns, and unsupported features
 
 **Do not choose or integrate either optional system without explicit user approval.** Never run two competing rollback systems. If approved, use one simulation clock, one snapshot/rollback authority, and multi-client/desync tests. GodotSteam is a separate optional lobby/transport decision.
 
-
-## 🎮 New to game design? AI can write the GDD for you
-
-A **GDD (Game Design Document)** is just a one-page plan describing your game's goal, controls, rules, look, and what the player does. You do **not** need to know how to make one. Say this to your local coding agent:
 
 ```text
 I have never designed a game. Ask me about games I enjoy, then suggest 3 small beginner-friendly ideas. Help me choose one and WRITE a one-page GDD for me in plain English. Show it for my review. Do not code until I approve it and say START DEVELOPMENT.
@@ -234,8 +247,7 @@ Design a small original third-person Soulslike arena using https://github.com/ca
 
 You can paste **this public GitHub repository URL** into your local coding agent (once your instructor has published it) and say: "Read its README.md and MASTER_PROMPT.md, guide me through setup, and help me invent a game idea." No manual cloning is required if your agent can fetch the repository.
 
-**Example teaching conversation:** [https://chatgpt.com/share/6b052cef-880c-83ec-bc5b-494c76a403f1
-](https://chatgpt.com/share/6b052cef-880c-83ec-bc5b-494c76a403f1). This is an optional reference link, not a substitute for the README or a local coding agent.
+**Example teaching conversation:** [https://chatgpt.com/share/6b047749-5fcc-83ec-822e-3a76af146a33](https://chatgpt.com/share/6b047749-5fcc-83ec-822e-3a76af146a33). This is an optional reference link, not a substitute for the README or a local coding agent.
 
 ## 🚀 Beginner starter prompts
 
@@ -401,7 +413,7 @@ MyGame/                      ← Godot project root
 
 **Read the currently published docs at build time; versions, pricing, and support may change.**
 
-- [Summer Engine installation](https://docs.summerengine.com/essentials/installation), [MCP setup](https://docs.summerengine.com/mcp/setup), [templates](https://www.summerengine.com/templates/), [asset generation](https://docs.summerengine.com/art-system/ai-generation), [asset licensing](https://docs.summerengine.com/art-system/licensing)
+- [Summer Engine installation](https://docs.summerengine.com/essentials/installation), [Summer CLI](https://www.summerengine.com/cli), [Summer MCP](https://www.summerengine.com/mcp), [Summer agent repository](https://github.com/SummerEngine/summer), [templates](https://www.summerengine.com/templates/), [asset generation](https://docs.summerengine.com/art-system/ai-generation), [asset licensing](https://docs.summerengine.com/art-system/licensing)
 - [Godot documentation](https://docs.godotengine.org/en/stable/)
 - [Netfox source](https://github.com/foxssake/netfox) and [complete documentation](https://foxssake.github.io/netfox/latest/)
 - [Co-op Anything](https://github.com/cranebeaker/coop-anything), [Game AI Kit](https://github.com/boscocp/game-ai-kit)

@@ -234,7 +234,8 @@ Design a small original third-person Soulslike arena using https://github.com/ca
 
 You can paste **this public GitHub repository URL** into your local coding agent (once your instructor has published it) and say: "Read its README.md and MASTER_PROMPT.md, guide me through setup, and help me invent a game idea." No manual cloning is required if your agent can fetch the repository.
 
-**Example teaching conversation:** [https://chatgpt.com/share/6b047749-5fcc-83ec-822e-3a76af146a33](https://chatgpt.com/share/6b047749-5fcc-83ec-822e-3a76af146a33). This is an optional reference link, not a substitute for the README or a local coding agent.
+**Example teaching conversation:** [https://chatgpt.com/share/6b052cef-880c-83ec-bc5b-494c76a403f1
+](https://chatgpt.com/share/6b052cef-880c-83ec-bc5b-494c76a403f1). This is an optional reference link, not a substitute for the README or a local coding agent.
 
 ## 🚀 Beginner starter prompts
 
